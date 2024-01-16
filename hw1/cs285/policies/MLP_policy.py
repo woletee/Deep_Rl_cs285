@@ -164,10 +164,10 @@ class MLPPolicySL(BasePolicy, nn.Module, metaclass=abc.ABCMeta):
             # You can add extra logging information here, but keep this line
             'Training Loss': ptu.to_numpy(loss),
         }
-
+this function will retunr the actions that should be taken given an obaservation 
     def get_action(self, observation: np.ndarray) -> np.ndarray:
         observation = torch.tensor(
             observation, dtype=torch.float32).to(ptu.device)
-        with torch.no_grad():
-            action = ptu.to_numpy(self.forward(observation))
-        return action
+        with torch.no_grad(): #here we have disabled the gradiant computation this is because here we are not training thus we donot need to compute the loss 
+            action = ptu.to_numpy(self.forward(observation)) #here we generate the action from the polciy using the function forward 
+        return action  #this will return the actions recommended by the forwrad function of the polciy 
