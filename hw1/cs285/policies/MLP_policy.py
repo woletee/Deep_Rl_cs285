@@ -125,17 +125,13 @@ class MLPPolicySL(BasePolicy, nn.Module, metaclass=abc.ABCMeta):
         :return:
             action: sampled action(s) from the policy
         """
-        # TODO: implement the forward pass of the network.
-        # You can return anything you want, but you should be able to differentiate
-        # through it. For example, you can return a torch.FloatTensor. You can also
-        # return more flexible objects, such as a
-        # `torch.distributions.Distribution` object. It's up to you!
+      
         observation = observation.float().to(ptu.device) #ensuring the observation is torch.floatTensor
         mean_action = self.mean_net(observation)  #the observation is then passed through the mean_net function which has been defined before to compute the mean of the action distribution 
-        std = torch.exp(self.logstd)
-        action_distribution = distributions.Normal(mean_action, std)
-        sampled_action = action_distribution.rsample()
-        return sampled_action
+        std = torch.exp(self.logstd) #here we will compute the standard deviation of the and here we it is calculated as log to maintain that the standard deviation is always posetive.
+        action_distribution = distributions.Normal(mean_action, std)  #for each action using the calculated mean and then standard deviation a normal distirbution is consturcted.
+        sampled_action = action_distribution.rsample() #from the calculated normal distiribution an action is sampled.
+        return sampled_action #finally we will return the sampled action
 
     def update(self, observations, actions):
         """
