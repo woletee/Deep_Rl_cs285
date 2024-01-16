@@ -171,3 +171,4 @@ this function will retunr the actions that should be taken given an obaservation
         with torch.no_grad(): #here we have disabled the gradiant computation this is because here we are not training thus we donot need to compute the loss 
             action = ptu.to_numpy(self.forward(observation)) #here we generate the action from the polciy using the function forward 
         return action  #this will return the actions recommended by the forwrad function of the polciy 
+#the get_action function converts the pytorch tensor actions into num_array which can be ysed latter for the neural network computation 
