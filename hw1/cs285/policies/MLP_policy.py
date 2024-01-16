@@ -132,7 +132,9 @@ class MLPPolicySL(BasePolicy, nn.Module, metaclass=abc.ABCMeta):
         action_distribution = distributions.Normal(mean_action, std)  #for each action using the calculated mean and then standard deviation a normal distirbution is consturcted.
         sampled_action = action_distribution.rsample() #from the calculated normal distiribution an action is sampled.
         return sampled_action #finally we will return the sampled action
-
+#the mean and the standard deviations calculated are basiclly the parameters for the probability distiribution (gaussiab distirbuiotns )
+#mean of the action distirbuiton is the expected value of the action given the current state
+#standard deviation is about the how much variance there is in the actions that the policy might take 
     def update(self, observations, actions):
         """
         Updates/trains the policy
