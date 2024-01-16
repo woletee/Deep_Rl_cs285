@@ -136,6 +136,7 @@ class MLPPolicySL(BasePolicy, nn.Module, metaclass=abc.ABCMeta):
 #mean of the action distirbuiton is the expected value of the action given the current state
 #standard deviation is about the how much variance there is in the actions that the policy might take 
     def update(self, observations, actions):
+    #this method will update the parameters of the policy 
         """
         Updates/trains the policy
 
