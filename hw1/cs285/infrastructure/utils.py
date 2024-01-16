@@ -12,6 +12,8 @@ import time
 
 from cs285.infrastructure import pytorch_util as ptu
 
+#this function samples a single trajectory or rollout from the environment using the given policy
+
 
 def sample_trajectory(env, policy, max_path_length, render=False):
     """Sample a rollout in the environment from a policy."""
@@ -36,19 +38,20 @@ def sample_trajectory(env, policy, max_path_length, render=False):
 
         # TODO use the most recent ob to decide what to do
         # TODO # HINT: this is a numpy array
-        ac = policy.get_action(ob)
+        ac = policy.get_action(ob)  #this is the line where the polciy is beign used 
+        #here actually the action here is gained as num_arrays since the get_funtion returns the array.
         # ac = ac[0]
         acs.append(ac)
         obs.append(ob)
 
         # TODO: take that action and get reward and next ob
-        next_ob, rew, done, _ = env.step(ac)
+        next_ob, rew, done, _ = env.step(ac)  #here we have take the action we get beofre which is (ac)
 
         # TODO rollout can end due to done, or due to max_path_length
         steps += 1
         # HINT: this is either 0 or 1
         rollout_done = 1 if done or steps >= max_path_length else 0
-
+#this will determine wheather the trajectory has to soppped or not
         # record result of taking that action
         obs.append(ob)
         acs.append(ac)
