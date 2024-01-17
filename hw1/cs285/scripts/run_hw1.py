@@ -130,7 +130,8 @@ def run_training_loop(params):
             paths = pickle.load(open(params['expert_data'], 'rb')) #the agent is trained using the previously stored expert data
             envsteps_this_batch = 0
  #behavioural cloning is done in the initila step when then number of iterations is 0
-#in the bevahvioral cloning there is no
+#in the bevahvioral cloning there is no interaction which means the agent is not discovering new states and does not seek for actions 
+#In the behavioural cloning we are just loading the data that is stored  as the expert data 
 #the replay buffer contains only the expert data
         else:
             # DAGGER training from sampled data relabeled by expert
