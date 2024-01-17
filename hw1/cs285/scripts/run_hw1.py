@@ -122,6 +122,7 @@ def run_training_loop(params):
             params['video_log_freq'] != -1))
         # decide if metrics should be logged
         log_metrics = (itr % params['scalar_log_freq'] == 0)
+#############################################################################Behavioural cloning 
 
         print("\nCollecting data to be used for training...")
         if itr == 0:
@@ -129,6 +130,7 @@ def run_training_loop(params):
             paths = pickle.load(open(params['expert_data'], 'rb')) #the agent is trained using the previously stored expert data
             envsteps_this_batch = 0
  #behavioural cloning is done in the initila step when then number of iterations is 0
+#in the bevahvioral cloning there is no
 #the replay buffer contains only the expert data
         else:
             # DAGGER training from sampled data relabeled by expert
