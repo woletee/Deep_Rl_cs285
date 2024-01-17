@@ -1,3 +1,4 @@
+
 import numpy as np
 
 from cs285.infrastructure import pytorch_util as ptu
@@ -24,7 +25,7 @@ def read_layer(l):
     return l['AffineLayer']['W'].astype(np.float32), l['AffineLayer'][
         'b'].astype(np.float32)
 
-
+#this class defines a policy which loads  a pre-traiend gaussian polciy 
 class LoadedGaussianPolicy(BasePolicy, nn.Module):
     def __init__(self, filename, **kwargs):
         super().__init__(**kwargs)
