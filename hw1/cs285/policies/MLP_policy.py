@@ -118,7 +118,7 @@ class MLPPolicySL(BasePolicy, nn.Module, metaclass=abc.ABCMeta):
         :param filepath: path to save MLP
         """
         torch.save(self.state_dict(), filepath)
-
+#this method basically creates the actions to be taken
     def forward(self, observation: torch.FloatTensor) -> Any:
         """
         Defines the forward pass of the network
