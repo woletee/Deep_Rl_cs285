@@ -1,3 +1,4 @@
+#this is used for recording the performance of the agent and then displaying the video
 from gym.wrappers import RecordVideo
 import glob
 import io
