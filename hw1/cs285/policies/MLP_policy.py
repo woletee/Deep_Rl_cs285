@@ -1,3 +1,5 @@
+#this is used for mapping the observations into their actions
+#it defines a policy network which uses a neural network to map the observations into actions 
 """
 Defines a pytorch policy as the agent's actor
 
