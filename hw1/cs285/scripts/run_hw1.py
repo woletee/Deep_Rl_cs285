@@ -126,9 +126,10 @@ def run_training_loop(params):
         print("\nCollecting data to be used for training...")
         if itr == 0:
             # BC training from expert data.
-            paths = pickle.load(open(params['expert_data'], 'rb'))
+            paths = pickle.load(open(params['expert_data'], 'rb')) #the agent is trained using the previously stored expert data
             envsteps_this_batch = 0
-   
+ #behavioural cloning is done in the initila step when then number of iterations is 0
+#the replay buffer contains only the expert data
         else:
             # DAGGER training from sampled data relabeled by expert
             assert params['do_dagger']
@@ -136,6 +137,8 @@ def run_training_loop(params):
             # HINT: use utils.sample_trajectories
             # TODO: implement missing parts of utils.sample_trajectory
             # Collecting `params['batch_size']` transitions for DAgger
+
+            #the agent interacts with the environment to collect new data.
             paths, envsteps_this_batch = utils.sample_trajectories(
                 env, actor, params['batch_size'], params['ep_len']
             )
@@ -152,12 +155,14 @@ def run_training_loop(params):
                 # TODO: relabel collected obsevations (from our policy) with labels from expert policy
                 # HINT: query the policy (using the get_action function) with paths[i]["observation"]
                 # and replace paths[i]["action"] with these expert labels
+
+           #the collected data or observations are relabeled with the actions from the expert policy.     
                 for i in range(len(paths)):
                     obs = paths[i]["observation"]
                     paths[i]["action"] = expert_policy.get_action(
                         paths[i]["observation"])
 
-        total_envsteps += envsteps_this_batch
+        total_envsteps += envsteps_this_batch  #this line of the code aggeragets the new data obatined with its actions into the existing dataset .
         # add collected data to replay buffer
         replay_buffer.add_rollouts(paths)
 
