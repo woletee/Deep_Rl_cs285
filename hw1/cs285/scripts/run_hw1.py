@@ -128,6 +128,7 @@ def run_training_loop(params):
             # BC training from expert data.
             paths = pickle.load(open(params['expert_data'], 'rb'))
             envsteps_this_batch = 0
+   
         else:
             # DAGGER training from sampled data relabeled by expert
             assert params['do_dagger']
@@ -138,7 +139,11 @@ def run_training_loop(params):
             paths, envsteps_this_batch = utils.sample_trajectories(
                 env, actor, params['batch_size'], params['ep_len']
             )
-
+#env - the environment in which the agent is operating like the openai gym env
+#actor- the policy in which the agent is performing now
+#bacth_size: the toatal number of time steps to go
+#ep_len: the maximue length of the individual trajectory to go
+#paths:is the return tht one can get from the sample_trajectoire function (set os actions, states ,rewards)
             # relabel the collected obs with actions from a provided expert policy
             if params['do_dagger']:
                 print(
@@ -173,7 +178,7 @@ def run_training_loop(params):
                 replay_buffer.obs[indices]).to(ptu.device)
             ac_batch = torch.from_numpy(
                 replay_buffer.acs[indices]).to(ptu.device)
-
+#the above code is trying to get the random samples from the replay buffer 
             # use the sampled data to train an agent
             train_log = actor.update(ob_batch, ac_batch)
             training_logs.append(train_log)
