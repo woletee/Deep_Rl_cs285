@@ -25,7 +25,8 @@ def read_layer(l):
     return l['AffineLayer']['W'].astype(np.float32), l['AffineLayer'][
         'b'].astype(np.float32)
 
-#this class defines a policy which loads  a pre-traiend gaussian polciy 
+#this class defines a policy which loads  a pre-traiend gaussian polciy model from the file stored 
+#and uses the model for generating the actions to be taken being in an observation 
 class LoadedGaussianPolicy(BasePolicy, nn.Module):
     def __init__(self, filename, **kwargs):
         super().__init__(**kwargs)
