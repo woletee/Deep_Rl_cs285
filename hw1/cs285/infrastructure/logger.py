@@ -1,3 +1,4 @@
+#this part is related to logging the record and then displying using the tesnorboard
 import os
 from tensorboardX import SummaryWriter
 import numpy as np
