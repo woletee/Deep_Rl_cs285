@@ -137,7 +137,7 @@ class MLPPolicyPG(MLPPolicy):
             log_prob = action_distribution.log_prob(actions).sum(dim=-1)
 
         loss = -(log_prob * advantages).mean()  # Negative for gradient ascent
-
+###may be sum ()
         # Backward pass on the loss
         self.optimizer.zero_grad()
         loss.backward()
