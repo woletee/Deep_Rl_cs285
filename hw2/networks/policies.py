@@ -9,7 +9,9 @@ from torch import distributions
 
 from cs285.infrastructure import pytorch_util as ptu
 
-
+#this is concerned with determinng which actions to take being in a specified state.
+#concerned with the policy of the agent which maps states to actions
+#the output is basically action distiribution 
 class MLPPolicy(nn.Module):
     """Base MLP policy, which can take an observation and output a distribution over actions.
 
