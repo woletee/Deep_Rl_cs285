@@ -14,6 +14,8 @@ from cs285.infrastructure import pytorch_util as ptu
 #value refers to the expected rewards that will be gained being in a given state.
 #it will output a single scaler value which indeicates the value of being in a specific state.
 #the main objective is to minimize the difference between the actual states values and the predicted states values
+#this critic assumes that the agent has interacted with the environment follwing some policy and then has the actual values of being in that states
+#using the actual vlaues and the one predicted by the critic , this class willcompute the loss.
 class ValueCritic(nn.Module):
     """Value network, which takes an observation and outputs a value for that observation."""
 
