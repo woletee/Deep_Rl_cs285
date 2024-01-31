@@ -10,7 +10,9 @@ from torch import distributions
 
 from cs285.infrastructure import pytorch_util as ptu
 
-
+#this is used to estimate the value of being in a given state according to the current policy 
+#value refers to the expected rewards that will be gained being in a given state.
+#it will output a single scaler value which indeicates the value of being in a specific state.
 class ValueCritic(nn.Module):
     """Value network, which takes an observation and outputs a value for that observation."""
 
