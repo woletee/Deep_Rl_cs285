@@ -63,3 +63,10 @@ class ValueCritic(nn.Module):
         return {
             "Baseline Loss": ptu.to_numpy(loss),
         }
+      def __init__(
+        self,
+        ob_dim: int,
+        n_layers: int,
+        layer_size: int,
+        learning_rate: float,
+    ):
