@@ -7,7 +7,7 @@ import torch
 from torch import distributions
 import torch.nn as nn
 from cs285.infrastructure import pytorch_util as ptu
-
+from torch.nn import nn 
 #this is concerned with determinng which actions to take being in a specified state.
 #concerned with the policy of the agent which maps states to actions
 #the output is basically action distiribution 
