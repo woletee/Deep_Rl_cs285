@@ -2,11 +2,10 @@ import itertools
 from torch import nn
 from torch.nn import functional as F
 from torch import optim
-
 import numpy as np
 import torch
 from torch import distributions
-
+import torch.nn as nn
 from cs285.infrastructure import pytorch_util as ptu
 
 #this is concerned with determinng which actions to take being in a specified state.
